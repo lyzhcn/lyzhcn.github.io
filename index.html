@@ -42,7 +42,7 @@
             width: 80px; 
             height: auto;
             display: block;
-            transition: transform 0.1s; /* 为LOGO本身添加过渡效果 */
+            /* 移除了LOGO的过渡效果 */
         }
         .container {
             max-width: 600px; /* 缩小容器宽度 */
@@ -197,19 +197,16 @@
         // 添加LOGO点击震动效果
         const logoWrap = document.querySelector('.logo-wrap');
         const mainContainer = document.getElementById('mainContainer');
-        const logo = document.querySelector('.logo');
 
         logoWrap.addEventListener('click', function() {
             // 为整个内容容器添加震动动画
             mainContainer.classList.add('shake-animation');
             
-            // 为LOGO添加点击反馈
-            logo.style.transform = 'scale(0.9)';
+            // 移除了LOGO的缩小效果
             
-            // 震动动画结束后移除类并重置LOGO
+            // 震动动画结束后移除类
             setTimeout(() => {
                 mainContainer.classList.remove('shake-animation');
-                logo.style.transform = 'scale(1)';
             }, 500);
         });
 
