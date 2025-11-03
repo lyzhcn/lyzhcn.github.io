@@ -65,17 +65,23 @@
                 transform: translateY(0);
             }
         }
-        /* 震动动画关键帧 */
+        /* 上下左右震动动画关键帧 */
         @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-3px); }
-            100% { transform: translateX(0); }
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-4px, -3px); }
+            20% { transform: translate(3px, 4px); }
+            30% { transform: translate(4px, -4px); }
+            40% { transform: translate(-3px, 3px); }
+            50% { transform: translate(-4px, 4px); }
+            60% { transform: translate(3px, -3px); }
+            70% { transform: translate(4px, 3px); }
+            80% { transform: translate(-3px, -4px); }
+            90% { transform: translate(2px, 2px); }
+            100% { transform: translate(0, 0); }
         }
         /* 震动动画类 */
         .shake-animation {
-            animation: shake 0.4s ease-in-out;
+            animation: shake 0.5s ease-in-out;
         }
         h1 {
             font-size: 20px; /* 缩小标题字体大小 */
@@ -173,7 +179,7 @@
             setTimeout(() => {
                 mainContainer.classList.remove('shake-animation');
                 logo.style.transform = 'scale(1)';
-            }, 400);
+            }, 500);
         });
     </script>
 </body>
