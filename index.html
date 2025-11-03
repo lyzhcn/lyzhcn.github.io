@@ -21,12 +21,14 @@
             top: 20px;
             left: 20px;
             z-index: 10;
+            cursor: pointer; /* 添加手型光标 */
             /* 移除遮罩层背景色 */
         }
         .logo { 
             width: 80px; 
             height: auto;
             display: block;
+            transition: transform 0.1s; /* 为LOGO本身添加过渡效果 */
         }
         .container {
             max-width: 600px; /* 缩小容器宽度 */
@@ -34,6 +36,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px; /* 缩小板块间距 */
+            transition: transform 0.3s; /* 为震动动画添加过渡 */
         }
         .content {
             z-index: 5; 
@@ -61,6 +64,18 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        /* 震动动画关键帧 */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-3px); }
+            100% { transform: translateX(0); }
+        }
+        /* 震动动画类 */
+        .shake-animation {
+            animation: shake 0.4s ease-in-out;
         }
         h1 {
             font-size: 20px; /* 缩小标题字体大小 */
@@ -101,7 +116,7 @@
         <img src="logo.png" alt="logo" class="logo">
     </div>
     <!-- 内容容器可上下滑动 -->
-    <div class="container">
+    <div class="container" id="mainContainer">
         <div class="content">
             <h1>绘制模板IMGUI</h1>
             <p>选择需要的模板版本进行下载</p>
@@ -141,6 +156,25 @@
         // 设置背景图片
         document.body.style.background = `url("${selectedBackground}") no-repeat center center fixed`;
         document.body.style.backgroundSize = 'cover';
+
+        // 添加LOGO点击震动效果
+        const logoWrap = document.querySelector('.logo-wrap');
+        const mainContainer = document.getElementById('mainContainer');
+        const logo = document.querySelector('.logo');
+
+        logoWrap.addEventListener('click', function() {
+            // 为整个内容容器添加震动动画
+            mainContainer.classList.add('shake-animation');
+            
+            // 为LOGO添加点击反馈
+            logo.style.transform = 'scale(0.9)';
+            
+            // 震动动画结束后移除类并重置LOGO
+            setTimeout(() => {
+                mainContainer.classList.remove('shake-animation');
+                logo.style.transform = 'scale(1)';
+            }, 400);
+        });
     </script>
 </body>
 </html>
