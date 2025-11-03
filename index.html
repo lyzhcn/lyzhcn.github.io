@@ -14,10 +14,19 @@
             min-height: 100vh; 
             position: relative; 
             overflow-y: auto; /* 开启垂直滚动 */
+            -webkit-tap-highlight-color: transparent; /* 隐藏点击高亮 */
         }
-        /* 隐藏所有元素的焦点轮廓 */
+        /* 隐藏所有元素的焦点轮廓 - 针对不同浏览器 */
         *:focus {
             outline: none !important;
+        }
+        * {
+            -webkit-tap-highlight-color: transparent; /* 针对Webkit浏览器 */
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 另一种写法 */
+            -webkit-user-select: none; /* 防止文本选择 */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         /* LOGO固定在左上角，不随滚动移动 */
         .logo-wrap {
@@ -27,6 +36,7 @@
             z-index: 10;
             cursor: pointer; /* 添加手型光标 */
             /* 移除遮罩层背景色 */
+            -webkit-tap-highlight-color: transparent;
         }
         .logo { 
             width: 80px; 
@@ -116,6 +126,10 @@
             width: 100%;
             /* 隐藏按钮焦点轮廓 */
             outline: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-appearance: none; /* 移除默认样式 */
+            -moz-appearance: none;
+            appearance: none;
         }
         .download-btn:hover { 
             background: #34495e; 
@@ -123,6 +137,13 @@
         /* 隐藏链接的焦点轮廓 */
         a {
             outline: none;
+            -webkit-tap-highlight-color: transparent;
+            text-decoration: none; /* 移除下划线 */
+            color: inherit; /* 继承颜色 */
+        }
+        /* 针对按钮内的链接 */
+        a button {
+            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
@@ -191,6 +212,12 @@
                 logo.style.transform = 'scale(1)';
             }, 500);
         });
+
+        // 额外的JavaScript方法来防止焦点高亮
+        document.addEventListener('touchstart', function() {}, false);
+        document.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+        }, false);
     </script>
 </body>
 </html>
