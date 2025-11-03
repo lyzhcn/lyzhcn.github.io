@@ -21,9 +21,7 @@
             top: 20px;
             left: 20px;
             z-index: 10;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 5px;
-            border-radius: 4px;
+            /* 移除遮罩层背景色 */
         }
         .logo { 
             width: 80px; 
@@ -31,44 +29,44 @@
             display: block;
         }
         .container {
-            max-width: 800px;
+            max-width: 600px; /* 缩小容器宽度 */
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 25px; /* 缩小板块间距，适配滑动 */
+            gap: 20px; /* 缩小板块间距 */
         }
         .content {
             z-index: 5; 
             background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            padding: 30px 20px;
+            border-radius: 15px; /* 缩小圆角 */
+            padding: 20px 15px; /* 缩小内边距 */
             text-align: center;
             backdrop-filter: blur(5px);
         }
         h1 {
-            font-size: 22px; /* 缩小标题字体大小 */
-            margin: 15px 0;
+            font-size: 20px; /* 缩小标题字体大小 */
+            margin: 10px 0;
             color: #222;
         }
         p {
-            font-size: 16px;
+            font-size: 14px; /* 缩小描述文字 */
             color: #555;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            width: 80%;
+            gap: 12px; /* 缩小按钮间距 */
+            width: 70%; /* 缩小按钮组宽度 */
             margin: 0 auto;
         }
         .download-btn { 
-            padding: 16px 32px; 
-            font-size: 18px; 
+            padding: 12px 24px; /* 缩小按钮内边距 */
+            font-size: 16px; /* 缩小按钮文字 */
             background: #2c3e50; 
             color: white; 
             border: none; 
-            border-radius: 10px; 
+            border-radius: 8px; /* 缩小按钮圆角 */
             cursor: pointer; 
             transition: background 0.3s;
             width: 100%;
