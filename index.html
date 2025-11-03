@@ -10,7 +10,6 @@
             padding: 80px 20px 20px; /* 顶部留出LOGO空间 */
             font-family: Arial, sans-serif; 
             box-sizing: border-box;
-            background: url("bj.jpg") no-repeat center center fixed;
             background-size: cover; 
             min-height: 100vh; 
             position: relative; 
@@ -47,7 +46,7 @@
             backdrop-filter: blur(5px);
         }
         h1 {
-            font-size: 26px; 
+            font-size: 22px; /* 缩小标题字体大小 */
             margin: 15px 0;
             color: #222;
         }
@@ -108,5 +107,23 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // 背景图片数组
+        const backgrounds = [
+            'bj.jpg',
+            'bj1.jpg',
+            'bj2.jpg',
+            'bj3.jpg'
+        ];
+        
+        // 随机选择背景图片
+        const randomIndex = Math.floor(Math.random() * backgrounds.length);
+        const selectedBackground = backgrounds[randomIndex];
+        
+        // 设置背景图片
+        document.body.style.background = `url("${selectedBackground}") no-repeat center center fixed`;
+        document.body.style.backgroundSize = 'cover';
+    </script>
 </body>
 </html>
