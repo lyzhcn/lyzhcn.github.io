@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U3D绘制模板下载</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 80px 20px 20px; /* 顶部留出LOGO空间 */
+            font-family: Arial, sans-serif; 
+            box-sizing: border-box;
+            background: url("bj.jpg") no-repeat center center fixed;
+            background-size: cover; 
+            min-height: 100vh; 
+            position: relative; 
+            overflow-y: auto; /* 开启垂直滚动 */
+        }
+        /* LOGO固定在左上角，不随滚动移动 */
+        .logo-wrap {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 5px;
+            border-radius: 4px;
+        }
+        .logo { 
+            width: 80px; 
+            height: auto;
+            display: block;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* 缩小板块间距，适配滑动 */
+        }
+        .content {
+            z-index: 5; 
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        h1 {
+            font-size: 26px; 
+            margin: 15px 0;
+            color: #222;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .download-btn { 
+            padding: 16px 32px; 
+            font-size: 18px; 
+            background: #2c3e50; 
+            color: white; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            transition: background 0.3s;
+            width: 100%;
+        }
+        .download-btn:hover { 
+            background: #34495e; 
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGO固定在左上角，不随页面滚动 -->
+    <div class="logo-wrap">
+        <img src="logo.png" alt="logo" class="logo">
+    </div>
+    <!-- 内容容器可上下滑动 -->
+    <div class="container">
+        <div class="content">
+            <h1>绘制模板IMGUI</h1>
+            <p>选择需要的模板版本进行下载</p>
+            <div class="btn-group">
+                <a href="https://wwrr.lanzoul.com/iTFSG32pxydg" target="_blank">
+                    <button class="download-btn">基础版</button>
+                </a>
+                <a href="https://wwrr.lanzoul.com/iLLJQ39y1rfa" target="_blank">
+                    <button class="download-btn">美化版</button>
+                </a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>绘制模板LGL</h1>
+            <p>选择需要的模板版本进行下载</p>
+            <div class="btn-group">
+                <a href="https://wwrr.lanzoul.com/iWx5Z32pxy6j" target="_blank">
+                    <button class="download-btn">基础版</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
