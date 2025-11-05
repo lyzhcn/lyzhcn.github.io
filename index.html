@@ -152,7 +152,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px 15px 0 0;
             padding: 20px;
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
@@ -238,6 +238,17 @@
             color: #2c3e50;
         }
         
+        /* 排行榜说明文字 */
+        .leaderboard-note {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+            font-style: italic;
+        }
+        
         /* 遮罩层 */
         .overlay {
             position: fixed;
@@ -321,6 +332,10 @@
                 <div class="player-score">6200</div>
             </li>
         </ul>
+        <!-- 排行榜说明文字 -->
+        <div class="leaderboard-note">
+            这些人在生活中严重影响了作者的生活
+        </div>
     </div>
     
     <!-- 遮罩层 -->
