@@ -349,14 +349,22 @@
         const leaderboard = document.getElementById('leaderboard');
         const overlay = document.getElementById('overlay');
         const closeLeaderboard = document.getElementById('closeLeaderboard');
+        
+        // 添加点击计数器
+        let clickCount = 0;
 
         logoWrap.addEventListener('click', function() {
             // 为整个内容容器添加震动动画
             mainContainer.classList.add('shake-animation');
             
-            // 显示排行榜
-            leaderboard.classList.add('show');
-            overlay.classList.add('show');
+            // 增加点击计数
+            clickCount++;
+            
+            // 如果是第二次或更多次点击，显示排行榜
+            if (clickCount >= 2) {
+                leaderboard.classList.add('show');
+                overlay.classList.add('show');
+            }
             
             // 震动动画结束后移除类
             setTimeout(() => {
