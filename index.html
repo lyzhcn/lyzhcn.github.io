@@ -145,6 +145,117 @@
         a button {
             -webkit-tap-highlight-color: transparent;
         }
+        
+        /* 排行榜样式 */
+        .leaderboard {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
+            z-index: 100;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .leaderboard.show {
+            transform: translateY(0);
+        }
+        
+        .leaderboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .leaderboard-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .close-leaderboard {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .leaderboard-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .leaderboard-item:first-child {
+            background-color: rgba(255, 215, 0, 0.3); /* 榜首特殊背景色 */
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+        
+        .rank {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        
+        .rank.first {
+            background-color: #ffd700; /* 金色 */
+            color: #333;
+        }
+        
+        .player-name {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .player-score {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        /* 遮罩层 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body>
@@ -176,6 +287,44 @@
             </div>
         </div>
     </div>
+    
+    <!-- 排行榜 -->
+    <div class="leaderboard" id="leaderboard">
+        <div class="leaderboard-header">
+            <div class="leaderboard-title">福木斯排行榜</div>
+            <button class="close-leaderboard" id="closeLeaderboard">×</button>
+        </div>
+        <ul class="leaderboard-list">
+            <li class="leaderboard-item">
+                <div class="rank first">1</div>
+                <div class="player-name">xxx</div>
+                <div class="player-score">9999</div>
+            </li>
+            <li class="leaderboard-item">
+                <div class="rank">2</div>
+                <div class="player-name">玩家B</div>
+                <div class="player-score">8500</div>
+            </li>
+            <li class="leaderboard-item">
+                <div class="rank">3</div>
+                <div class="player-name">玩家C</div>
+                <div class="player-score">7200</div>
+            </li>
+            <li class="leaderboard-item">
+                <div class="rank">4</div>
+                <div class="player-name">玩家D</div>
+                <div class="player-score">6800</div>
+            </li>
+            <li class="leaderboard-item">
+                <div class="rank">5</div>
+                <div class="player-name">玩家E</div>
+                <div class="player-score">6200</div>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
 
     <script>
         // 背景图片数组
@@ -197,17 +346,34 @@
         // 添加LOGO点击震动效果
         const logoWrap = document.querySelector('.logo-wrap');
         const mainContainer = document.getElementById('mainContainer');
+        const leaderboard = document.getElementById('leaderboard');
+        const overlay = document.getElementById('overlay');
+        const closeLeaderboard = document.getElementById('closeLeaderboard');
 
         logoWrap.addEventListener('click', function() {
             // 为整个内容容器添加震动动画
             mainContainer.classList.add('shake-animation');
             
-            // 移除了LOGO的缩小效果
+            // 显示排行榜
+            leaderboard.classList.add('show');
+            overlay.classList.add('show');
             
             // 震动动画结束后移除类
             setTimeout(() => {
                 mainContainer.classList.remove('shake-animation');
             }, 500);
+        });
+
+        // 关闭排行榜
+        closeLeaderboard.addEventListener('click', function() {
+            leaderboard.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+        
+        // 点击遮罩层也可以关闭排行榜
+        overlay.addEventListener('click', function() {
+            leaderboard.classList.remove('show');
+            overlay.classList.remove('show');
         });
 
         // 额外的JavaScript方法来防止焦点高亮
